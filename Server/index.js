@@ -23,8 +23,14 @@ app.post('/talk', function (req, res) {
     var request = apiapp.textRequest(req.body.data, options)
 
     request.on('response', function (response) {
-        if (response.result.fulfillment.speech) {
+        console.log(req);
+        if (response.result && response.result.actionIncomplete) {
             res.end(response.result.fulfillment.speech);
+            console.log("Actionincomplete:"+ response.result.actionIncomplete)
+            console.log("Chatbot: "+response.result.fulfillment.speech);
+        } else if (response.result) {
+            res.end(response.result.fulfillment.speech);
+            console.log("ActionIncomplete:"+ response.result.actionIncomplete)
             console.log("Chatbot: "+response.result.fulfillment.speech);
         } else {
             res.end("No fullfilment")
@@ -37,6 +43,15 @@ app.post('/talk', function (req, res) {
 
     request.end();
 })
+
+
+app.post('/webhook', function (req, res) {
+    console.log("Webhook!!!");
+
+    res.end("Webhook not yet implemented")
+
+})
+
 
 
 var server = app.listen(8081, function () {
