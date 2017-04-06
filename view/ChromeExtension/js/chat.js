@@ -1,8 +1,8 @@
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        console.log(sender.tab ?
-            "from a content script:" + sender.tab.url :
-            "from the extension");
-        if (request.greeting == "hello")
-            sendResponse({farewell: "goodbye"});
-    });
+
+var transfer = 'some text';
+
+chrome.extension.onMessage.addListener(function(message,sender,sendResponse){
+    sendResponse({type:"test"});
+    if(message.text == "getStuff");
+
+});
