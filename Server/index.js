@@ -27,11 +27,26 @@ app.post('/talk', function (req, res) {
     var request = apiapp.textRequest(req.body.data, options)
 
     request.on('response', function (response) {
-        console.log(req);
-        if (response.result && response.result.actionIncomplete) {
-            res.end(response.result.fulfillment.speech);
-            console.log("Actionincomplete:"+ response.result.actionIncomplete)
-            console.log("Chatbot: "+response.result.fulfillment.speech);
+
+        if (response.result && !response.result.actionIncomplete) {
+             var queryType = response.result.action;
+             switch (queryType) {
+                 case "findRoom":
+                      console.log("Find Room function called!")
+                        jsonProcesses.findRooms(response, function(nameString){
+                            console.log("Rooms: " + nameString);
+                            res.end(nameString);
+                        });
+                     break;
+                 case "roomBeds":
+                     console.log("Find Beds!")
+                     jsonProcesses.findBeds(response, function(nameString){
+                         console.log("Rooms: " + nameString);
+                         res.end(nameString);
+                     });
+                     break;
+
+             }
         } else if (response.result) {
             res.end(response.result.fulfillment.speech);
             console.log("ActionIncomplete:"+ response.result.actionIncomplete)

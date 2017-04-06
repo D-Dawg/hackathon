@@ -442,7 +442,7 @@
           ],
           "bed": {
             "@type": "BedDetails",
-            "numberOfBeds": "1"
+            "numberOfBeds": "2"
           },
           "occupancy": {
             "@type": "QuantitativeValue",
