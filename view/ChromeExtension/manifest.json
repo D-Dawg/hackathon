@@ -15,8 +15,8 @@
     "48": "img/icon48.png",
     "128": "img/icon128.png" },
   "background": {
-    "scripts": ["js/jquery-3.2.0.min.js","js/chat.js"],
-    "persistent": false
+    "scripts": ["js/jquery-3.2.0.min.js","js/background.js"],
+    "persistent": true
   },
   "content_scripts": [{
     "js":  ["js/jquery-3.2.0.min.js", "js/content.js"],
