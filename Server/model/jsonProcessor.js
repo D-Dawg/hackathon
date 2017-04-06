@@ -33,21 +33,18 @@ processor.findRooms = function(response){
 
 processor.findBeds = function(response){
     console.log(response.result.parameters);
-    var paramName = response.result.parameters.roomName
+    var paramName = response.result.parameters.number
 
         var roomString = "";
         var i = 0;
-        var numberOfBeds = 0;
-        while (i < size){
-            var name = json.makesOffer[0].itemOffered[i].name;
+
             if(name = paramName){
-               numberOfBeds =  json.makesOffer[0].itemOffered[i].bed.numberOfBeds;
-                i = size
-            }
-            i++;
+               numberOfBeds =  json.makesOffer[0].itemOffered[paramName].bed.numberOfBeds;
+
         }
+
         console.log(numberOfBeds);
-        return(numberOfBeds + " Beds are in room "+paramName);
+        return(numberOfBeds + " Beds are in room number "+paramName +" : " + json.makesOffer[0].itemOffered[paramName].name);
 };
 
 
