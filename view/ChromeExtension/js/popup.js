@@ -9,6 +9,9 @@ $(document).ready(function() {
     var chatWindow = $("#chat_window");
     chatWindow.text();
     var clientmsg = $("#usermsg");
+    var submit = $("#submitmsg");
+    clientmsg.val("\<Your Message\>");
+
     if(foundJson!=null&&foundJson!=''){
         console.log(foundJson);
         var types = getAllUsedTypes();
@@ -22,22 +25,24 @@ $(document).ready(function() {
     }else{
         chatWindow.text(bot + welcomeMsg);
     }
-    $("#submitmsg").click(function () {
-        if(clientmsg.val() != ''){
+    clientmsg.click(function () {
+        clientmsg.val('');
+    });
+    submit.click(function () {
+        if(clientmsg.val() != '\<Your Message\>'){
             chatWindow.append("</br>"+client + clientmsg.val());
             var height = chatWindow[0].scrollHeight;
             chatWindow.scrollTop(height);
             sendRequest(clientmsg.val());
-            clientmsg.val("");
+            clientmsg.val("\<Your Message\>");
             return false;
         }
-
     });
 
     function getAllUsedTypes() {
         var allTypes = [];
-        var json = jQuery.parseJSON(foundJson);
-        var foundType = json['@type'];
+        // var json = jQuery.parseJSON(foundJson);
+        // var foundType = json['@type'];
         var i = 0;
         do{
             var occurence = foundJson.indexOf('@type');
