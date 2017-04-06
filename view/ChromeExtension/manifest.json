@@ -1,25 +1,26 @@
 {
   "manifest_version": 2,
 
-  "name": "Lisa",
-  "description": "Hey I am Lisa and specialized in helping you with your questions based on semantic data.",
+  "name": "Semanti",
+  "description": "Hey I am Semanti and specialized in helping you with your questions based on semantic data.",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "img/icon.png",
+    "default_popup": "html/popup.html"
   },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ],
+  "permissions": ["tabs", "<all_urls>"],
   "icons": {
-    "16": "icon.png",
-    "48": "icon48.png",
-    "128": "icon128.png" },
+    "16": "img/icon.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png" },
   "background": {
-//    "scripts": ["chat.js"],
-    "page":"background.html",
+    "scripts": ["js/jquery-3.2.0.min.js","js/chat.js"],
     "persistent": false
-  }
+  },
+  "content_scripts": [{
+    "js":  ["js/jquery-3.2.0.min.js", "js/content.js"],
+    "matches": ["<all_urls>"]
+  }]
+
 }
