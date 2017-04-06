@@ -8,7 +8,8 @@ $(document).ready(function() {
     var client = prefix + "You: "
     var chatWindow = $("#chat_window");
     var clientmsg = $("#usermsg");
-    if(foundJson!=null){
+    if(foundJson!=null&&foundJson!=''){
+        console.log(foundJson);
         var types = getAllUsedTypes();
         chatWindow.append("Hey Semanti here, I found the following annotations on the website.</br>");
         if(types.length!=0){

@@ -1,6 +1,10 @@
 var express = require('express');
 var app = express();
 
+var jsonProcesses = require('./model/jsonProcessor.js');
+
+jsonProcesses.helloWorld11();
+
 var apiai = require('apiai');
 var apiapp = apiai("9cfe25911ce14e4f94ddc70716cf7102");
 
@@ -41,13 +45,13 @@ app.post('/talk', function (req, res) {
         console.log(error);
     });
     request.end();
-})
+});
 
 
 app.post('/webhook', function (req, res) {
     res.end("Webhook not yet implemented")
 
-})
+});
 
 
 
@@ -56,4 +60,4 @@ var server = app.listen(8081, function () {
     var port = '8081';
     console.log("hackathon app listening at http://%s:%s", host, port)
 
-})
+});
