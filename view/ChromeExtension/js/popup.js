@@ -19,9 +19,9 @@ $(document).ready(function() {
     });
 
     function sendRequest(data) {
-        $.post("http://localhost:8081/talk",
-           data.toString()
-        ,
+        $.post("http://localhost:8081/talk",{
+           data: data
+        },
             function(data, status){
             chatWindow.append("</br>"+ bot +data);
 
