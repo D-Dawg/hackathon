@@ -40,14 +40,11 @@ app.post('/talk', function (req, res) {
     request.on('error', function (error) {
         console.log(error);
     });
-
     request.end();
 })
 
 
 app.post('/webhook', function (req, res) {
-    console.log("Webhook!!!");
-
     res.end("Webhook not yet implemented")
 
 })
@@ -55,10 +52,8 @@ app.post('/webhook', function (req, res) {
 
 
 var server = app.listen(8081, function () {
-
     var host = 'localhost';
     var port = '8081';
-
     console.log("hackathon app listening at http://%s:%s", host, port)
 
 })
