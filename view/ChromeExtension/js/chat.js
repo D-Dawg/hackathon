@@ -1,8 +1,9 @@
+chrome.runtime.onMessage.addListener(function (msg, sender) {
+    // First, validate the message's structure
+    if ((msg.from === 'content') && msg.data != null) {
 
-var transfer = 'some text';
-
-chrome.extension.onMessage.addListener(function(message,sender,sendResponse){
-    sendResponse({type:"test"});
-    if(message.text == "getStuff");
-
+        // Enable the page-action for the requesting tab
+        window.alert("jaaaa");
+        chrome.pageAction.show(sender.tab.id);
+    }
 });

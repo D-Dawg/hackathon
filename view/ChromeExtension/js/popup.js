@@ -11,6 +11,8 @@ $(document).ready(function() {
     $("#submitmsg").click(function () {
         if(clientmsg.val() != ''){
             chatWindow.append("</br>"+client + clientmsg.val());
+            var height = chatWindow[0].scrollHeight;
+            chatWindow.scrollTop(height);
             sendRequest(clientmsg.val());
             clientmsg.val("");
             return false;
@@ -24,7 +26,8 @@ $(document).ready(function() {
         },
             function(data, status){
             chatWindow.append("</br>"+ bot +data);
-
+                var height = chatWindow[0].scrollHeight;
+                chatWindow.scrollTop(height);
             });
     }
 
