@@ -3,7 +3,7 @@ var app = express();
 
 var jsonProcesses = require('./model/jsonProcessor.js');
 
-jsonProcesses.helloWorld11();
+jsonProcesses.initialize();
 
 var apiai = require('apiai');
 var apiapp = apiai("9cfe25911ce14e4f94ddc70716cf7102");
@@ -33,17 +33,11 @@ app.post('/talk', function (req, res) {
              switch (queryType) {
                  case "findRoom":
                       console.log("Find Room function called!")
-                        jsonProcesses.findRooms(response, function(nameString){
-                            console.log("Rooms: " + nameString);
-                            res.end(nameString);
-                        });
+                     res.end(jsonProcesses.findRooms(response));
                      break;
                  case "roomBeds":
                      console.log("Find Beds!")
-                     jsonProcesses.findBeds(response, function(nameString){
-                         console.log("Rooms: " + nameString);
-                         res.end(nameString);
-                     });
+                     res.end(jsonProcesses.findBeds(response));
                      break;
 
              }
