@@ -13,22 +13,21 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 var count = 0;
 
 app.post('/talk', function (req, res) {
-    console.log("success");
-    console.log(req.body.data);
+    console.log("User: "+req.body.data);
 
     var options = {
         sessionId: count
     };
-    count++;
+
 
     var request = apiapp.textRequest(req.body.data, options)
 
     request.on('response', function (response) {
         if (response.result.fulfillment.speech) {
             res.end(response.result.fulfillment.speech);
-            console.log(response.result.fulfillment.speech);
+            console.log("Chatbot: "+response.result.fulfillment.speech);
         } else {
-            res.end("Thx")
+            res.end("No fullfilment")
         }
     });
 
@@ -45,6 +44,6 @@ var server = app.listen(8081, function () {
     var host = 'localhost';
     var port = '8081';
 
-    console.log("Example app listening at http://%s:%s", host, port)
+    console.log("hackathon app listening at http://%s:%s", host, port)
 
 })
