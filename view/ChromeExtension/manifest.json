@@ -21,6 +21,7 @@
   "content_scripts": [{
     "js":  ["js/jquery-3.2.0.min.js", "js/content.js"],
     "matches": ["<all_urls>"]
+
   }]
 
 }

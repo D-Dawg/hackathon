@@ -7,6 +7,7 @@ $(document).ready(function() {
     var bot = prefix + "Semanti: ";
     var client = prefix + "You: "
     var chatWindow = $("#chat_window");
+    chatWindow.text();
     var clientmsg = $("#usermsg");
     if(foundJson!=null&&foundJson!=''){
         console.log(foundJson);
@@ -35,6 +36,8 @@ $(document).ready(function() {
 
     function getAllUsedTypes() {
         var allTypes = [];
+        var json = jQuery.parseJSON(foundJson);
+        var foundType = json['@type'];
         var i = 0;
         do{
             var occurence = foundJson.indexOf('@type');
